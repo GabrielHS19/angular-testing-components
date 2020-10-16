@@ -37,7 +37,9 @@ describe('VoterComponent', () => {
  
    });
   it('should highligth the upvote button if i have upvoted', () => {
+    
     component.myVote = 1;
+
     fixture.detectChanges();
  
     let de = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
