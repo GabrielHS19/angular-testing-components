@@ -13,11 +13,11 @@ export class TodosService {
   }
 
   getTodos() { 
-    return this.http.get('...').pipe(res => res);
+    return this.http.get<[]>('...').pipe(res => res);
   }
 
   getTodosPromise() {
-    return this.http.get('...').pipe(res => res).toPromise();
+    return this.http.get<[]>('...').pipe(res => res).toPromise();
   }
 
   delete(id) {

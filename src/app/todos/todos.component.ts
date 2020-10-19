@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TodosService } from './todos.service'
+//import { TodosService } from './todos.service'
 //import { Http } from '@angular/http/src/http';
 import {HttpClient} from '@angular/common/http';
+import { TodosService } from '../todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -9,11 +10,24 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-
-  constructor() { }
+  todos:any[] = [];
+  message; 
+  constructor(private service : TodosService) { }
 
   ngOnInit(): void {
     this.service.getTodos().subscribe(t => this.todos = t);
+  } 
+
+  add() { 
+    var newTodo = { title: '... ' };
+    this.service.add(newTodo).subscribe(
+      t => this.todos.push(t),
+      err => this.message = err);
   }
+
+  delete(id) {
+    if (confirm('Are you sure?'))
+      this.service.delete(id).subscribe();
+  } 
 
 }
