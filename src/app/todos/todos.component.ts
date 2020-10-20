@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { TodosService } from './todos.service'
 //import { Http } from '@angular/http/src/http';
 import {HttpClient} from '@angular/common/http';
-import { TodosService } from '../todos.service';
+import { TodosService } from './todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -14,7 +14,7 @@ export class TodosComponent implements OnInit {
   message; 
   constructor(private service : TodosService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.service.getTodos().subscribe(t => this.todos = t);
   } 
 
